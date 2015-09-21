@@ -1,0 +1,28 @@
+{
+  "name": "node-red-drone",
+  "version": "1.0.0",
+  "description": "Node-RED node to control the Parrot AR Drone",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jthomas/node-red-drone.git"
+  },
+  "keywords": [
+    "node-red",
+    "drone"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jthomas/node-red-drone/issues"
+  },
+  "homepage": "https://github.com/jthomas/node-red-drone#readme",
+  "node-red": {
+    "nodes": {
+      "drone-config": "drone-config/drone-config.js",
+      "drone-commands": "drone-commands/drone-commands.js",
+      "drone-data": "drone-data/drone-data.js"
+    }
+  }
+}
