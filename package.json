@@ -24,5 +24,8 @@
       "drone-commands": "drone-commands/drone-commands.js",
       "drone-data": "drone-data/drone-data.js"
     }
+  },
+  "dependencies": {
+    "ar-drone": "^0.3.3"
   }
 }

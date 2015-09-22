@@ -3,12 +3,21 @@ module.exports = function (RED) {
     RED.nodes.createNode(this, config)
     var node = this
 
-    console.log(config)
+    var ip_address = RED.nodes.getNode(config.ip_address)
+    var client = ip_address.connection.client
 
-    var ip_address = RED.nodes.getNode(config.ip_address);
-    console.log(ip_address)
     this.on('input', function (msg) {
-      console.log(msg.payload)
+    console.log(typeof client[msg.payload])
+      if (typeof client[msg.payload] !== 'function') {
+        node.error('Unknown drone command. Please see the documentation for valid commands.')
+        return
+      }
+
+      // argument can a single value or array of parameters
+      var options = Array.isArray(msg.command_options) 
+        ? msg.command_options : [msg.command_options]
+
+      client[msg.payload].apply(client, options)
     })
   }
 
