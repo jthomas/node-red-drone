@@ -1,5 +1,6 @@
 <script type="text/javascript">
     RED.nodes.registerType('drone-commands', {
+        paletteLabel: 'AR.Drone',
         category: 'output',
         color: '#a6bbcf',
         defaults: {
@@ -7,8 +8,9 @@
           ip_address: {value:"", type: "drone-config"}
         },
         inputs:1,
+        icon: "drone.svg",
         label: function() {
-            return this.name || "drone-commands";
+            return this.name || "AR.Drone";
         }
     });
 </script>

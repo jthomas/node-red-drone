@@ -7,7 +7,6 @@ module.exports = function (RED) {
     var client = ip_address.connection.client
 
     this.on('input', function (msg) {
-    console.log(typeof client[msg.payload])
       if (typeof client[msg.payload] !== 'function') {
         node.error('Unknown drone command. Please see the documentation for valid commands.')
         return

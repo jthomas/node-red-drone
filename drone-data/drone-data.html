@@ -2,21 +2,85 @@
     RED.nodes.registerType('drone-data', {
         category: 'input',
         color: '#a6bbcf',
+        icon: "drone.svg",
         defaults: {
           name: {value: ""},
-          ip_address: {value:"", type: "drone-config"}
+          ip_address: {value:"", type: "drone-config"},
+          landed: {value: false},
+          landing: {value: false},
+          flying: {value: false},
+          hovering: {value: false},
+          batteryChange: {value: false},
+          altitudeChange: {value: false},
+          pictures: {value: false},
+          pictures_delay: {value: 0},
+          telemetry: {value: false},
+          telemetry_delay: {value: 0},
+          gps: {value: false},
+          gps_delay: {value: 0}
         },
         outputs:1,
+        paletteLabel: "AR.Drone",
         label: function() {
-            return this.name || "drone-data";
+            return this.name || "AR.Drone";
         }
     });
 </script>
 
 <script type="text/x-red" data-template-name="drone-data">
     <div class="form-row">
-        <label for="node-input-ip_address"><i class="icon-wifi"></i> Drone IP Address</label>
+        <label for="node-input-ip_address" style="width: 110px;"><i class="icon-wifi"></i> IP Address:</label>
         <input type="text" id="node-input-ip_address" placeholder="Drone IP Address">
+    </div>
+    <label style="width: 100%"><i class="fa fa-rss"></i> Publish the following events: </label>
+    <div class="form-row" style="display: flex;">
+        <div>
+          <div>
+          <label for="node-input-landed"><i class="icon-wifi"></i> Landed</label>
+          <input type="checkbox" id="node-input-landed" style="width: auto;">
+          </div>
+          <div>
+          <label for="node-input-hovering"><i class="icon-wifi"></i> Hovering</label>
+          <input type="checkbox" id="node-input-hovering" style="width: auto;">
+          </div>
+          <div>
+          <label for="node-input-batteryChange"><i class="icon-wifi"></i> Battery</label>
+          <input type="checkbox" id="node-input-batteryChange" style="width: auto;">
+          </div>
+        </div>
+        <div style="margin-left: 100px;">
+          <div>
+          <label for="node-input-landing"><i class="icon-wifi"></i> Landing</label>
+          <input type="checkbox" id="node-input-landing" style="width: auto;">
+          </div>
+          <div>
+          <label for="node-input-flying"><i class="icon-wifi"></i> Flying</label>
+          <input type="checkbox" id="node-input-flying" style="width: auto;">
+          </div>
+          <div>
+          <label for="node-input-altitudeChange"><i class="icon-wifi"></i> Altitude</label>
+          <input type="checkbox" id="node-input-altitudeChange" style="width: auto;">
+          </div>
+        </div>
+    </div>
+    <label style="width: 100%"><i class="fa fa-rss"></i> Publish the following data streams: </label>
+    <div class="form-row">
+        <label for="node-input-pictures"><i class="icon-wifi"></i> Pictures</label>
+        <input type="checkbox" id="node-input-pictures" style="width: auto;">
+        <label for="node-input-pictures_delay" style="width: 120px; margin-left: 20px;"><i class="icon-wifi"></i> Delay (ms)</label>
+        <input type="text" id="node-input-pictures_delay" style="width: 70px; height: 10px;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-telemetry"><i class="icon-wifi"></i> Telemetry</label>
+        <input type="checkbox" id="node-input-telemetry" style="width: auto;">
+        <label for="node-input-telemetry_delay" style="width: 120px; margin-left: 20px;"><i class="icon-wifi"></i> Delay (ms)</label>
+        <input type="text" id="node-input-telemetry_delay" style="width: 70px; height: 10px;">
+    </div>
+    <div class="form-row">
+        <label for="node-input-gps"><i class="icon-wifi"></i> GPS</label>
+        <input type="checkbox" id="node-input-gps" style="width: auto;">
+        <label for="node-input-gps_delay" style="width: 120px; margin-left: 20px;"><i class="icon-wifi"></i> Delay (ms)</label>
+        <input type="text" id="node-input-gps_delay" style="width: 70px; height: 10px;">
     </div>
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i> Name</label>
