@@ -1,6 +1,3 @@
-// TODO: 
-// Set events based upon what's happening 
-// Allow you to choose which events to ignore
 var events = [ "landed", "hovering", "flying", "landing", "batteryChange", "altitudeChange" ]
 var streams = [ "pictures", "telemetry", "gps" ]
 var commands = [ "photo", "status", "location"]
@@ -16,7 +13,7 @@ module.exports = function (RED) {
     var client = ip_address.connection.client
 
     events.forEach(function (event) {
-      if (!config[event]) return;
+      if (!config[event]) return
 
       var listener = function (data) {
         node.send({payload: event, data: data})
